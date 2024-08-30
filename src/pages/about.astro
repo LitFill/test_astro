@@ -1,0 +1,68 @@
+---
+import '../styles/global.css'
+
+const pageTitle = 'About Me'
+
+const identitas = {
+    nama: 'LitFill',
+    negara: 'Indonesia',
+    pekerjaan: "Mahasantri Ma'had Aly Andalusia",
+    bahasaPemrograman: ['JS', 'TS', 'go','raku','haskell'],
+};
+
+const happy = true
+const selesai = false
+const goal = 10
+
+const warnaBahasa = 'navy'
+const beratFontBahasa = 'bold'
+const caseTextBahasa = 'uppercase'
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="w1sdth=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+        <style define:vars={{warnaBahasa, beratFontBahasa, caseTextBahasa}}>
+            h1 {
+                color: purple;
+                font-size: 4rem;
+            }
+            .bahasa {
+                color: var(--warnaBahasa);
+                font-weight: var(--beratFontBahasa);
+                text-transform: var(--caseTextBahasa);
+            }
+        </style>
+	</head>
+    <body>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+
+        <h1>{pageTitle}</h1>
+        <h2>... and my new Astro site!</h2>
+
+        <p>Aku sedang belajar menggunakan tutorial pengenalan Astro.</p>
+        <p style="color: blue;">This is a page about About.</p>
+
+        <p>Beberapa Fakta Tentangku:</p>
+        <ul>
+            <li>Namaku {identitas.nama}.</li>
+            <li>Aku tinggal di {identitas.negara}, dan aku seorang {identitas.pekerjaan}.</li>
+        </ul>
+        <p>Beberapa Skilku</p>
+        <ul>
+            {identitas.bahasaPemrograman.map((bahasa) => <li class="bahasa">{bahasa}</li>)}
+        </ul>
+
+        {happy && <p>Aku senang belajar Astro!</p>}
+
+        {selesai && <p>Aku telah menyelesaikan tutorial Astro!</p>}
+
+        {goal === 10 ? <p>Targetku adalah selesai dalam 10 hari.</p> : <p>Targetku bukan 10 hari.</p>}
+	</body>
+</html>
